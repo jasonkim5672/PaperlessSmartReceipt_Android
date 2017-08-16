@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="972495bc-bbd9-4fad-800e-7e0af07eded4" name="Default" comment="" />
+    <list default="true" id="972495bc-bbd9-4fad-800e-7e0af07eded4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PaperlessSmartReceipt_Android/.idea/modules.xml" afterPath="$PROJECT_DIR$/PaperlessSmartReceipt_Android/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PaperlessSmartReceipt_Android/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/PaperlessSmartReceipt_Android/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PaperlessSmartReceipt_Android/app/src/main/java/com/ssu/cse/paperlesssmartreceipt_android/MainActivity.java" afterPath="$PROJECT_DIR$/PaperlessSmartReceipt_Android/app/src/main/java/com/ssu/cse/paperlesssmartreceipt_android/MainActivity.java" />
+    </list>
     <ignored path="PaperlessSmartReceipt_Android.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,7 +47,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
+    <navigator currentView="AndroidView" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -57,9 +61,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -90,13 +92,33 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="PaperlessSmartReceipt_Android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="copyright">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane />
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">

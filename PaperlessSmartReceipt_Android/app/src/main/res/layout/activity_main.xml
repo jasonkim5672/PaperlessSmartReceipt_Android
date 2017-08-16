@@ -5,21 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.nfctest.MainActivity">
+    tools:context="com.ssu.cse.paperlesssmartreceipt_android.MainActivity">
 
-    <ToggleButton
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textOn="Read"
-        android:textOff="Write"
-        android:checked="true"
-        android:id="@+id/tglReadWrite"/>
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/write_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그에 쓰기" >
+        </Button>
+    </LinearLayout>
 
     <EditText
+        android:id="@+id/note"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/txtTagContent"
-        android:onClick="tglReadWriteOnClick"/>
+        android:gravity="top"
+        android:hint="여기에 데이터를 입력하시오." >
+    </EditText>
 
 </LinearLayout>

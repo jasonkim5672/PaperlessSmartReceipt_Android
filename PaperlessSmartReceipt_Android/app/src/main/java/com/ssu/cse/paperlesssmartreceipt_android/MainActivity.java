@@ -19,6 +19,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity
         // Intent filters for writing to a tag
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] { tagDetected };
+
+        addView();
     }
 
     @Override
@@ -269,6 +272,14 @@ public class MainActivity extends AppCompatActivity
 
     private void toast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void addView() {
+        LinearLayout lTemp = (LinearLayout)findViewById(R.id.scrollLin);
+        for(int i = 0; i < 10; i++) {
+            lTemp.addView((LinearLayout)findViewById(R.id.receipt_id));
+        }
     }
 
 }

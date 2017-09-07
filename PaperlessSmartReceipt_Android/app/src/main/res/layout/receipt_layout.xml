@@ -19,7 +19,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="storeNameTemp" />
+            android:text="storeNameTemp"
+            android:id="@+id/storeNameText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -32,7 +33,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="repreNameTemp" />
+            android:text="repreNameTemp"
+            android:id="@+id/repreNameText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -45,7 +47,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="corpRegistNumberTemp" />
+            android:text="corpRegistNumberTemp"
+            android:id="@+id/corpRegistNumberText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -58,7 +61,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="addressTemp" />
+            android:text="addressTemp"
+            android:id="@+id/addressText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -71,7 +75,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="dateTemp" />
+            android:text="dateTemp"
+            android:id="@+id/dateText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -84,7 +89,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="receiptNumberTemp" />
+            android:text="receiptNumberTemp"
+            android:id="@+id/receiptNumberText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -97,7 +103,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="productInformTemp" />
+            android:text="productInformTemp"
+            android:id="@+id/productInformText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -110,7 +117,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="extraTaxTemp" />
+            android:text="extraTaxTemp"
+            android:id="@+id/extraTaxText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -123,7 +131,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="taxTemp" />
+            android:text="taxTemp"
+            android:id="@+id/taxText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -136,7 +145,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cardSortTemp" />
+            android:text="cardSortTemp"
+            android:id="@+id/cardSortText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -149,7 +159,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cardNumberTemp" />
+            android:text="cardNumberTemp"
+            android:id="@+id/cardNumberText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -162,7 +173,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="expDateTemp" />
+            android:text="expDateTemp"
+            android:id="@+id/expDateText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -175,7 +187,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="monthlyPlanTemp" />
+            android:text="monthlyPlanTemp"
+            android:id="@+id/monthlyPlanText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -188,7 +201,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="approvalNumberTemp" />
+            android:text="approvalNumberTemp"
+            android:id="@+id/approvalNumberText"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -201,6 +215,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="approvalDateTemp" />
+            android:text="approvalDateTemp"
+            android:id="@+id/approvalDateText"/>
     </LinearLayout>
 </LinearLayout>

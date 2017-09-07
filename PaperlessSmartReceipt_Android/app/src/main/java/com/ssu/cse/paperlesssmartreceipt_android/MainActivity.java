@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     IntentFilter[] mWriteTagFilters;
     IntentFilter[] mNdefExchangeFilters;
 
+    private ReceiptInform receiptInform;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,9 @@ public class MainActivity extends AppCompatActivity
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] { tagDetected };
 
-        addView();
+
+        //receiptInform = new ReceiptInform();
+        addView(); // 확인하는 임시 함수
     }
 
     @Override
@@ -275,11 +279,13 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void addView() {
+    private void addView() { // 화면 추가가 되는지 확인하는 임시 함수
         LinearLayout lTemp = (LinearLayout)findViewById(R.id.scrollLin);
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 10; i++) { // 10개정도 추가
             lTemp.addView((LinearLayout)findViewById(R.id.receipt_id));
         }
     }
 
+    private void initReceiptInform() { // database에서 정보 가져오기
+    }
 }

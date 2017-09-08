@@ -19,6 +19,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -28,12 +29,11 @@ public class MainActivity extends AppCompatActivity
 
     private static final String TAG = "stickynotes";
     private boolean mResumed = false;
-    private boolean mWriteMode = false;
+    //private boolean mWriteMode = false;
     NfcAdapter mNfcAdapter;
-    EditText mNote;
+    TextView mNote;
 
     PendingIntent mNfcPendingIntent;
-    IntentFilter[] mWriteTagFilters;
     IntentFilter[] mNdefExchangeFilters;
 
     private ReceiptInform receiptInform;
@@ -46,9 +46,7 @@ public class MainActivity extends AppCompatActivity
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
         setContentView(R.layout.activity_main);
-        findViewById(R.id.write_tag).setOnClickListener(mTagWriter);
-        mNote = ((EditText) findViewById(R.id.note));
-        mNote.addTextChangedListener(mTextWatcher);
+        mNote = ((TextView) findViewById(R.id.note));
 
         // Handle all of our received NFC intents in this activity.
         mNfcPendingIntent = PendingIntent.getActivity(this, 0,
@@ -60,10 +58,6 @@ public class MainActivity extends AppCompatActivity
             ndefDetected.addDataType("text/plain");
         } catch (IntentFilter.MalformedMimeTypeException e) { }
         mNdefExchangeFilters = new IntentFilter[] { ndefDetected };
-
-        // Intent filters for writing to a tag
-        IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
-        mWriteTagFilters = new IntentFilter[] { tagDetected };
 
         receiptInformHandler = new ReceiptInformHandler(this);
     }
@@ -92,55 +86,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onNewIntent(Intent intent) {
         // NDEF exchange mode
-        if (!mWriteMode && NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
             NdefMessage[] msgs = getNdefMessages(intent);
             promptForContent(msgs[0]);
         }
-
-        // Tag writing mode
-        if (mWriteMode && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
-            Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-            writeTag(getNoteAsNdef(), detectedTag);
-        }
     }
-
-    private TextWatcher mTextWatcher = new TextWatcher() {
-
-        @Override
-        public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable arg0) {
-            if (mResumed) {
-                mNfcAdapter.enableForegroundNdefPush(MainActivity.this, getNoteAsNdef());
-            }
-        }
-    };
-
-    private View.OnClickListener mTagWriter = new View.OnClickListener() {
-        @Override
-        public void onClick(View arg0) {
-            // Write to a tag for as long as the dialog is shown.
-            disableNdefExchangeMode();
-            enableTagWriteMode();
-
-            new AlertDialog.Builder(MainActivity.this).setTitle("Touch tag to write")
-                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            disableTagWriteMode();
-                            enableNdefExchangeMode();
-                        }
-                    }).create().show();
-        }
-    };
 
     private void promptForContent(final NdefMessage msg) {
         new AlertDialog.Builder(this).setTitle("영수증을 발급 받았습니다.")
@@ -154,11 +104,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setNoteBody(String body) {
-        Editable text = mNote.getText();
+        //Editable text = mNote.getText();
         //text.clear();
         //text.append(body);
-        receiptInformHandler.addReceiptInform(body);
+        mNote.setText(body);
+        try {
+            receiptInformHandler.addReceiptInform(body);
+        }catch (Exception e) {
+            mNote.append("Error!");
+        }
     }
+
 
     private NdefMessage getNoteAsNdef() {
         byte[] textBytes = mNote.getText().toString().getBytes();
@@ -209,66 +165,4 @@ public class MainActivity extends AppCompatActivity
         mNfcAdapter.disableForegroundDispatch(this);
     }
 
-    private void enableTagWriteMode() {
-        mWriteMode = true;
-        IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
-        mWriteTagFilters = new IntentFilter[] {
-                tagDetected
-        };
-        mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mWriteTagFilters, null);
-    }
-
-    private void disableTagWriteMode() {
-        mWriteMode = false;
-        mNfcAdapter.disableForegroundDispatch(this);
-    }
-
-    boolean writeTag(NdefMessage message, Tag tag) {
-        int size = message.toByteArray().length;
-
-        try {
-            Ndef ndef = Ndef.get(tag);
-            if (ndef != null) {
-                ndef.connect();
-
-                if (!ndef.isWritable()) {
-                    toast("Tag is read-only.");
-                    return false;
-                }
-                if (ndef.getMaxSize() < size) {
-                    toast("Tag capacity is " + ndef.getMaxSize() + " bytes, message is " + size
-                            + " bytes.");
-                    return false;
-                }
-
-                ndef.writeNdefMessage(message);
-                toast("Wrote message to pre-formatted tag.");
-                return true;
-            } else {
-                NdefFormatable format = NdefFormatable.get(tag);
-                if (format != null) {
-                    try {
-                        format.connect();
-                        format.format(message);
-                        toast("Formatted tag and wrote message");
-                        return true;
-                    } catch (IOException e) {
-                        toast("Failed to format tag.");
-                        return false;
-                    }
-                } else {
-                    toast("Tag doesn't support NDEF.");
-                    return false;
-                }
-            }
-        } catch (Exception e) {
-            toast("Failed to write tag");
-        }
-
-        return false;
-    }
-
-    private void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-    }
 }

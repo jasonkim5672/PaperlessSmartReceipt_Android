@@ -7,28 +7,13 @@
     android:orientation="vertical"
     tools:context="com.ssu.cse.paperlesssmartreceipt_android.MainActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
-        android:hint="여기에 데이터를 입력하시오." >
-    </EditText>
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/write_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="태그에 쓰기"
-            android:layout_gravity="center">
-        </Button>
-    </LinearLayout>
+        android:text="여기에 받은 데이터가 표시" >
+    </TextView>
 
     <ScrollView
         android:layout_width="match_parent"

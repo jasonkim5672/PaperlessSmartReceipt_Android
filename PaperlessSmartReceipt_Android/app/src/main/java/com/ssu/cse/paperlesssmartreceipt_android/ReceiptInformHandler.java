@@ -2,6 +2,7 @@ package com.ssu.cse.paperlesssmartreceipt_android;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,24 +16,26 @@ import java.util.ArrayList;
 public class ReceiptInformHandler {
     private ArrayList<ReceiptInform> receiptInformArrayList;
     private LinearLayout scrollLinearLayout;
+
     private Activity activity;
     private DBHelper dbHelper;
+    private SQLiteDatabase sqLiteDatabase;
 
 
     public ReceiptInformHandler(Activity activity) {
-        // get database
-        // receiptInformArrayList = getDB();
 
         this.activity = activity;
         scrollLinearLayout = (LinearLayout)activity.findViewById(R.id.scrollLin);
-        dbHelper = new DBHelper();
-        receiptInformArrayList = dbHelper.getDB();
+        dbHelper = new DBHelper(activity.getApplicationContext());
+        sqLiteDatabase = dbHelper.getWritableDatabase();
+        receiptInformArrayList = dbHelper.getDB(sqLiteDatabase);
 
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
             addLayout(receiptInformArrayList.get(i));
         }
 
     }
+
 
     private void addLayout(ReceiptInform receiptInform) {
         LayoutInflater inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,7 +60,7 @@ public class ReceiptInformHandler {
         receiptNumberText.setText(receiptInform.getReceiptNumber());
         // 상품목록
         TextView t = (TextView)activity.findViewById(R.id.productInformText);
-        t.setText("test");
+        t.setText(receiptInform.getProductInformString());
         //TextView test = new TextView();
         //TextView storeNameText = (TextView)activity.findViewById(R.id.storeNameText);
         //storeNameText.setText("테스트");
@@ -82,8 +85,9 @@ public class ReceiptInformHandler {
         scrollLinearLayout.addView(linearLayoutTemp);
     }
 
-    public void addReceiptInform() {
-        // add ReceiptInform
+    public void addReceiptInform(ReceiptInform receiptInform) {
+        addLayout(receiptInform);
+        dbHelper.insertInform(sqLiteDatabase, receiptInform);
     }
 
     public void search() {

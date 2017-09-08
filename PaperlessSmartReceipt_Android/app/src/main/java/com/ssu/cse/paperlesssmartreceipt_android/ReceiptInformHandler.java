@@ -30,10 +30,26 @@ public class ReceiptInformHandler {
         sqLiteDatabase = dbHelper.getWritableDatabase();
         receiptInformArrayList = dbHelper.getDB(sqLiteDatabase);
 
+        /*
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
             addLayout(receiptInformArrayList.get(i));
         }
+*/
+        testLayout(); // 테스트 코드 추후 삭제해야함
+    }
 
+    private void testLayout() {
+        for(int i = 0; i < 10; i++) {
+            LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            LinearLayout linearLayoutTemp = (LinearLayout) inflater.inflate(R.layout.receipt_layout, null);
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(20, 20, 20, 20);
+            linearLayoutTemp.setLayoutParams(layoutParams);
+
+            scrollLinearLayout.addView(linearLayoutTemp);
+        }
     }
 
 

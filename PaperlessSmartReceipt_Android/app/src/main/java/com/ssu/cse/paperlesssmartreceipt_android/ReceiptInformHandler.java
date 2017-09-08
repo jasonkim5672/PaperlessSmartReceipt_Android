@@ -16,6 +16,7 @@ public class ReceiptInformHandler {
     private ArrayList<ReceiptInform> receiptInformArrayList;
     private LinearLayout scrollLinearLayout;
     private Activity activity;
+    private DBHelper dbHelper;
 
 
     public ReceiptInformHandler(Activity activity) {
@@ -24,12 +25,13 @@ public class ReceiptInformHandler {
 
         this.activity = activity;
         scrollLinearLayout = (LinearLayout)activity.findViewById(R.id.scrollLin);
+        dbHelper = new DBHelper();
+        receiptInformArrayList = dbHelper.getDB();
 
-        /*
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
             addLayout(receiptInformArrayList.get(i));
         }
-        */
+
     }
 
     private void addLayout(ReceiptInform receiptInform) {

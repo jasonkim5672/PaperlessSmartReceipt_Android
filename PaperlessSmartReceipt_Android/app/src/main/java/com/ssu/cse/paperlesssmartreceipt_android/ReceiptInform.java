@@ -1,5 +1,7 @@
 package com.ssu.cse.paperlesssmartreceipt_android;
 
+import java.util.ArrayList;
+
 /**
  * Created by eunhye Lee on 2017-08-22.
  */
@@ -45,8 +47,8 @@ public class ReceiptInform
     private String date;    //매출일
     private String receiptNumber;   //영수증
 
-    private ProductInform[] productInform; // 상품 목록    //
     private String productInformString;
+    private ArrayList<ProductInform> productInformArrayList;
 
     //금액과 합계금액은 unitPrice * quantity 로 계산
     private int extraTax;   //과세물품가액
@@ -66,6 +68,7 @@ public class ReceiptInform
 
         parseString();
     }
+    public ReceiptInform() {}
 
     private void parseString() {
         // 큰틀은 !로 구분, 상품들은 $로 구분, 상품상세정보는 #로 구분
@@ -80,12 +83,7 @@ public class ReceiptInform
         receiptNumber = stringTemp[5];
 
         // 상품목록 구하기
-        productInformString = stringTemp[6];
-        String[] productStringTemp = stringTemp[6].split("$");
-        productInform = new ProductInform[productStringTemp.length];
-        for(int i = 0; i < productStringTemp.length; i++) {
-            productInform[i] = new ProductInform(productStringTemp[i]);
-        }
+        setProductInformString(stringTemp[6]);
 
         extraTax = Integer.parseInt(stringTemp[7]);
         tax = Integer.parseInt(stringTemp[8]);
@@ -120,9 +118,7 @@ public class ReceiptInform
         return corpRegistNumber;
     }
 
-    public void setCorpRegistNumber(String corpRegistNumber) {
-        this.corpRegistNumber = corpRegistNumber;
-    }
+    public void setCorpRegistNumber(String corpRegistNumber) { this.corpRegistNumber = corpRegistNumber; }
 
     public String getAddress() {
         return address;
@@ -149,10 +145,20 @@ public class ReceiptInform
     }
     
 
-    public ProductInform[] getProduct() {
-        return productInform;
+    public ArrayList<ProductInform> getProductInformArrayList() {
+        return productInformArrayList;
     }
+
     public String getProductInformString() { return productInformString; }
+    public void setProductInformString(String productInformString) {
+        this.productInformString = productInformString;
+
+        productInformArrayList = new ArrayList<ProductInform>();
+        String[] productStringTemp = productInformString.split("$");
+        for(int i = 0; i < productStringTemp.length; i++) {
+            productInformArrayList.add(new ProductInform(productStringTemp[i]));
+        }
+    }
 
 
     public int getExtraTax() {

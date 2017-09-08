@@ -88,6 +88,7 @@ public class ReceiptInformHandler {
     public void addReceiptInform(ReceiptInform receiptInform) {
         addLayout(receiptInform);
         dbHelper.insertInform(sqLiteDatabase, receiptInform);
+        receiptInformArrayList.add(receiptInform);
     }
 
     public void search() {

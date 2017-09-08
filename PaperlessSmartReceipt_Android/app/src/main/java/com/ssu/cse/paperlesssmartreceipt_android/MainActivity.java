@@ -2,7 +2,6 @@ package com.ssu.cse.paperlesssmartreceipt_android;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -18,11 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -147,18 +143,12 @@ public class MainActivity extends AppCompatActivity
     };
 
     private void promptForContent(final NdefMessage msg) {
-        new AlertDialog.Builder(this).setTitle("Replace current content?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setTitle("영수증을 발급 받았습니다.")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         String body = new String(msg.getRecords()[0].getPayload());
                         setNoteBody(body);
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-
                     }
                 }).show();
     }

@@ -44,16 +44,10 @@ public class ReceiptInform
     private String address; //주소
     private String date;    //매출일
     private String receiptNumber;   //영수증
-<<<<<<< HEAD
-    private String productName;   //상품명
-    private String unitPrice;    //단가
-    private String quantity; //수량
-=======
 
     private ProductInform[] productInform; // 상품 목록    //
     private String productInformString;
 
->>>>>>> ReceiptInform
     //금액과 합계금액은 unitPrice * quantity 로 계산
     private int extraTax;   //과세물품가액
     private int tax;    //부가세
@@ -153,40 +147,13 @@ public class ReceiptInform
     public void setReceiptNumber(String receiptNumber) {
         this.receiptNumber = receiptNumber;
     }
-
-<<<<<<< HEAD
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-=======
+    
 
     public ProductInform[] getProduct() {
         return productInform;
->>>>>>> ReceiptInform
     }
     public String getProductInformString() { return productInformString; }
 
-<<<<<<< HEAD
-    public String getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(String unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-=======
->>>>>>> ReceiptInform
 
     public int getExtraTax() {
         return extraTax;

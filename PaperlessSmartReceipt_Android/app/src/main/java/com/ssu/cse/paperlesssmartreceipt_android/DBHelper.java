@@ -28,9 +28,7 @@ public class DBHelper extends SQLiteOpenHelper
                 "address CHAR(100) NOT NULL," +
                 "date CHAR(20) NOT NULL," +
                 "receiptNumber CHAR(20) PRIMARY KEY," +
-                "productName CHAR(1000) NOT NULL," +
-                "unitPrice CHAR(1000) NOT NULL," +
-                "quantity CHAR(500) NOT NULL," +
+                "productInformString CHAR(3000) NOT NULL," +
                 "extraTax Long NOT NULL," +
                 "tax Long NOT NULL," +
                 "cardSort CHAR(30)," +
@@ -48,6 +46,11 @@ public class DBHelper extends SQLiteOpenHelper
         onCreate(db);
     }
 
+    @Override
+    public SQLiteDatabase getWritableDatabase() {
+        return super.getWritableDatabase();
+    }
+
     public void insertInform(SQLiteDatabase db, ReceiptInform inform)
     {
         db.execSQL("INSERT INTO ReceiptTBL VALUES ('" +
@@ -57,9 +60,7 @@ public class DBHelper extends SQLiteOpenHelper
                 inform.getAddress()+"','" +
                 inform.getDate()+"','" +
                 inform.getReceiptNumber()+"','" +
-                inform.getProductName()+"','" +
-                inform.getUnitPrice()+"','" +
-                inform.getQuantity()+"'," +
+                inform.getProductInformString()+"'," +
                 inform.getExtraTax()+"," +
                 inform.getTax()+",'" +
                 inform.getCardSort()+"','" +
@@ -88,17 +89,15 @@ public class DBHelper extends SQLiteOpenHelper
             temp.setAddress(cursor.getString(3));
             temp.setDate(cursor.getString(4));
             temp.setReceiptNumber(cursor.getString(5));
-            temp.setProductName(cursor.getString(6));
-            temp.setUnitPrice(cursor.getString(7));
-            temp.setQuantity(cursor.getString(8));
-            temp.setExtraTax(Integer.parseInt(cursor.getString(9)));
-            temp.setTax(Integer.parseInt(cursor.getString(10)));
-            temp.setCardSort(cursor.getString(11));
-            temp.setCardNumber(cursor.getString(12));
-            temp.setExpDate(cursor.getString(13));
-            temp.setMonthlyPlan(cursor.getString(14));
-            temp.setApprovalNumber(Integer.parseInt(cursor.getString(15)));
-            temp.setApprovalDate(cursor.getString(16));
+            temp.setProductInformString(cursor.getString(6));
+            temp.setExtraTax(Integer.parseInt(cursor.getString(7)));
+            temp.setTax(Integer.parseInt(cursor.getString(8)));
+            temp.setCardSort(cursor.getString(9));
+            temp.setCardNumber(cursor.getString(10));
+            temp.setExpDate(cursor.getString(11));
+            temp.setMonthlyPlan(cursor.getString(12));
+            temp.setApprovalNumber(Integer.parseInt(cursor.getString(13)));
+            temp.setApprovalDate(cursor.getString(14));
 
             data.add(temp);
         }

@@ -6,15 +6,54 @@ package com.ssu.cse.paperlesssmartreceipt_android;
 
 public class ReceiptInform
 {
+    public class ProductInform {
+        private String productName;   //상품명
+        private int unitPrice;    //단가
+        private int quantity; //수량
+
+        String stringData; // 파싱전 string
+
+        public ProductInform(String stringData) {
+            this.stringData = stringData;
+
+            parseString();
+        }
+
+        private void parseString() {
+            String[] stringTemp = stringData.split("#");
+
+            productName = stringTemp[0];
+            unitPrice = Integer.parseInt(stringTemp[1]);
+            quantity = Integer.parseInt(stringTemp[2]);
+        }
+
+        public String getProductName() {
+            return productName;
+        }
+        public int getUnitPrice() {
+            return unitPrice;
+        }
+        public int getQuantity() { return quantity; }
+    }
+
+    private String stringData; // 파싱전 string
+
     private String storeName;   //매장명
     private String repreName;   //대표자
     private String corpRegistNumber;    //사업자번호
     private String address; //주소
     private String date;    //매출일
     private String receiptNumber;   //영수증
+<<<<<<< HEAD
     private String productName;   //상품명
     private String unitPrice;    //단가
     private String quantity; //수량
+=======
+
+    private ProductInform[] productInform; // 상품 목록    //
+    private String productInformString;
+
+>>>>>>> ReceiptInform
     //금액과 합계금액은 unitPrice * quantity 로 계산
     private int extraTax;   //과세물품가액
     private int tax;    //부가세
@@ -27,6 +66,45 @@ public class ReceiptInform
     //판매금액 == 과세물품가액, 부가세 == 부가세, 승인금액 == 합계금액
     private int approvalNumber;  //승인번호
     private String approvalDate;    //승인일시
+
+    public ReceiptInform(String stringData) {
+        this.stringData = stringData;
+
+        parseString();
+    }
+
+    private void parseString() {
+        // 큰틀은 !로 구분, 상품들은 $로 구분, 상품상세정보는 #로 구분
+
+        String[] stringTemp = stringData.split("!");
+        // 0 ~ 14, 총 15개의 변수
+        storeName = stringTemp[0];
+        repreName = stringTemp[1];
+        corpRegistNumber = stringTemp[2];
+        address = stringTemp[3];
+        date = stringTemp[4];
+        receiptNumber = stringTemp[5];
+
+        // 상품목록 구하기
+        productInformString = stringTemp[6];
+        String[] productStringTemp = stringTemp[6].split("$");
+        productInform = new ProductInform[productStringTemp.length];
+        for(int i = 0; i < productStringTemp.length; i++) {
+            productInform[i] = new ProductInform(productStringTemp[i]);
+        }
+
+        extraTax = Integer.parseInt(stringTemp[7]);
+        tax = Integer.parseInt(stringTemp[8]);
+        cardSort = stringTemp[9];
+        cardNumber = stringTemp[10];
+        expDate = stringTemp[11];
+        monthlyPlan = stringTemp[12];
+        approvalNumber = Integer.parseInt(stringTemp[13]);
+        approvalDate = stringTemp[14];
+    }
+
+
+
 
     public String getStoreName() {
         return storeName;
@@ -76,14 +154,22 @@ public class ReceiptInform
         this.receiptNumber = receiptNumber;
     }
 
+<<<<<<< HEAD
     public String getProductName() {
         return productName;
     }
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
+=======
 
+    public ProductInform[] getProduct() {
+        return productInform;
+>>>>>>> ReceiptInform
+    }
+    public String getProductInformString() { return productInformString; }
+
+<<<<<<< HEAD
     public String getUnitPrice() {
         return unitPrice;
     }
@@ -99,6 +185,8 @@ public class ReceiptInform
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
+=======
+>>>>>>> ReceiptInform
 
     public int getExtraTax() {
         return extraTax;

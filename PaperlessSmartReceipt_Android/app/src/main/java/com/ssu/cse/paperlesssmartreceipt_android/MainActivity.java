@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
 
 
         //receiptInform = new ReceiptInform();
-        addView(); // 확인하는 임시 함수
+        //addView(); // 확인하는 임시 함수
     }
 
     @Override
@@ -281,8 +281,9 @@ public class MainActivity extends AppCompatActivity
 
     private void addView() { // 화면 추가가 되는지 확인하는 임시 함수
         LinearLayout lTemp = (LinearLayout)findViewById(R.id.scrollLin);
+        lTemp.addView((LinearLayout));
         for(int i = 0; i < 10; i++) { // 10개정도 추가
-            lTemp.addView((LinearLayout)findViewById(R.id.receipt_id));
+            //lTemp.addView((LinearLayout)findViewById(R.id.receipt_id));
         }
     }
 

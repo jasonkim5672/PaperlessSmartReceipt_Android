@@ -2,6 +2,7 @@ package com.ssu.cse.paperlesssmartreceipt_android;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -17,9 +18,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity
 
 
         //receiptInform = new ReceiptInform();
-        //addView(); // 확인하는 임시 함수
+        addView(); // 확인하는 임시 함수
     }
 
     @Override
@@ -281,8 +284,14 @@ public class MainActivity extends AppCompatActivity
 
     private void addView() { // 화면 추가가 되는지 확인하는 임시 함수
         LinearLayout lTemp = (LinearLayout)findViewById(R.id.scrollLin);
-        lTemp.addView((LinearLayout));
+
+        //lTemp.addView((LinearLayout)findViewById(R.id.receipt_id));
         for(int i = 0; i < 10; i++) { // 10개정도 추가
+            LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LinearLayout viewTemp = (LinearLayout)inflater.inflate(R.layout.receipt_layout, null);
+            TextView textViewTemp = (TextView)viewTemp.findViewById(R.id.storeNameText);
+            textViewTemp.setText("테스트" + i);
+            lTemp.addView(viewTemp);
             //lTemp.addView((LinearLayout)findViewById(R.id.receipt_id));
         }
     }

@@ -155,8 +155,9 @@ public class MainActivity extends AppCompatActivity
 
     private void setNoteBody(String body) {
         Editable text = mNote.getText();
-        text.clear();
-        text.append(body);
+        //text.clear();
+        //text.append(body);
+        receiptInformHandler.addReceiptInform(body);
     }
 
     private NdefMessage getNoteAsNdef() {

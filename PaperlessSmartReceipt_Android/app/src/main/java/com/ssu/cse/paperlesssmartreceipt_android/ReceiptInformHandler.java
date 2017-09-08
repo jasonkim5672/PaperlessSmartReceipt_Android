@@ -85,13 +85,14 @@ public class ReceiptInformHandler {
         scrollLinearLayout.addView(linearLayoutTemp);
     }
 
-    public void addReceiptInform(ReceiptInform receiptInform) {
+    public void addReceiptInform(String stringTemp) {
+        ReceiptInform receiptInform = new ReceiptInform(stringTemp);
         addLayout(receiptInform);
         dbHelper.insertInform(sqLiteDatabase, receiptInform);
         receiptInformArrayList.add(receiptInform);
     }
 
-    public void search() {
+    public void search(String stringTemp) {
         // search
     }
 }

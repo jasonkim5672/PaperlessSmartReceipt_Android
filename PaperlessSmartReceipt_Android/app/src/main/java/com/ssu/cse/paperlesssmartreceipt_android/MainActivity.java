@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
     protected void onPause() {
         super.onPause();
         mResumed = false;
-        mNfcAdapter.disableForegroundNdefPush(this);
+        //mNfcAdapter.disableForegroundNdefPush(this);
     }
 
     @Override

@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity
 
     private ReceiptInform receiptInform;
 
+    private ReceiptInformHandler receiptInformHandler;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +69,7 @@ public class MainActivity extends AppCompatActivity
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] { tagDetected };
 
-
-        //receiptInform = new ReceiptInform();
-        addView(); // 확인하는 임시 함수
+        receiptInformHandler = new ReceiptInformHandler(this);
     }
 
     @Override
@@ -279,23 +279,5 @@ public class MainActivity extends AppCompatActivity
 
     private void toast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-    }
-
-
-    private void addView() { // 화면 추가가 되는지 확인하는 임시 함수
-        LinearLayout lTemp = (LinearLayout)findViewById(R.id.scrollLin);
-
-        //lTemp.addView((LinearLayout)findViewById(R.id.receipt_id));
-        for(int i = 0; i < 10; i++) { // 10개정도 추가
-            LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            LinearLayout viewTemp = (LinearLayout)inflater.inflate(R.layout.receipt_layout, null);
-            TextView textViewTemp = (TextView)viewTemp.findViewById(R.id.storeNameText);
-            textViewTemp.setText("테스트" + i);
-            lTemp.addView(viewTemp);
-            //lTemp.addView((LinearLayout)findViewById(R.id.receipt_id));
-        }
-    }
-
-    private void initReceiptInform() { // database에서 정보 가져오기
     }
 }

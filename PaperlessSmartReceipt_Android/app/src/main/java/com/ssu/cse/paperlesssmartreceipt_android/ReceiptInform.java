@@ -46,6 +46,7 @@ public class ReceiptInform
     private String receiptNumber;   //영수증
 
     private ProductInform[] productInform; // 상품 목록    //
+    private String productInformString;
 
     //금액과 합계금액은 unitPrice * quantity 로 계산
     private int extraTax;   //과세물품가액
@@ -79,6 +80,7 @@ public class ReceiptInform
         receiptNumber = stringTemp[5];
 
         // 상품목록 구하기
+        productInformString = stringTemp[6];
         String[] productStringTemp = stringTemp[6].split("$");
         productInform = new ProductInform[productStringTemp.length];
         for(int i = 0; i < productStringTemp.length; i++) {
@@ -150,6 +152,7 @@ public class ReceiptInform
     public ProductInform[] getProduct() {
         return productInform;
     }
+    public String getProductInformString() { return productInformString; }
 
 
     public int getExtraTax() {

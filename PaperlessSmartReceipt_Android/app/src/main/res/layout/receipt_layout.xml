@@ -5,19 +5,29 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
+    android:paddingBottom="10dp"
     android:background="@color/white">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#eeeeee">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="storeName : " />
-        <TextView
+            android:text="매장명:"
+            android:textColor="#000000"
+            android:textSize="35dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold" />
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"
             android:text="storeNameTemp"
             android:id="@+id/storeNameText"/>
     </LinearLayout>
@@ -28,12 +38,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="repreName : " />
-        <TextView
+            android:text="대표자명:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="repreNameTemp"
-            android:id="@+id/repreNameText"/>
+            android:id="@+id/repreNameText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -42,12 +59,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="corpRegistNumber : " />
-        <TextView
+            android:text="사업자번호:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="corpRegistNumberTemp"
-            android:id="@+id/corpRegistNumberText"/>
+            android:id="@+id/corpRegistNumberText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -56,12 +80,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="address : " />
-        <TextView
+            android:text="주소:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="addressTemp"
-            android:id="@+id/addressText"/>
+            android:id="@+id/addressText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -70,12 +101,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="date : " />
-        <TextView
+            android:text="매출일:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="dateTemp"
-            android:id="@+id/dateText"/>
+            android:id="@+id/dateText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -84,12 +122,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="receiptNumber : " />
-        <TextView
+            android:text="영수증번호:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="receiptNumberTemp"
-            android:id="@+id/receiptNumberText"/>
+            android:id="@+id/receiptNumberText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -98,12 +143,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="productInform : " />
-        <TextView
+            android:text="상품정보:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="productInformTemp"
-            android:id="@+id/productInformText"/>
+            android:id="@+id/productInformText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -112,12 +164,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="extraTax : " />
-        <TextView
+            android:text="과세물품가액:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="extraTaxTemp"
-            android:id="@+id/extraTaxText"/>
+            android:id="@+id/extraTaxText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -126,12 +185,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="tax : " />
-        <TextView
+            android:text="부가세:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="taxTemp"
-            android:id="@+id/taxText"/>
+            android:id="@+id/taxText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -140,12 +206,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cardSort : " />
-        <TextView
+            android:text="카드종류:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cardSortTemp"
-            android:id="@+id/cardSortText"/>
+            android:id="@+id/cardSortText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -154,12 +227,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cardNumber : " />
-        <TextView
+            android:text="카드번호:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cardNumberTemp"
-            android:id="@+id/cardNumberText"/>
+            android:id="@+id/cardNumberText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -168,12 +248,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="expDate : " />
-        <TextView
+            android:text="유효기간:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="expDateTemp"
-            android:id="@+id/expDateText"/>
+            android:id="@+id/expDateText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -182,12 +269,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="monthlyPlan : " />
-        <TextView
+            android:text="할부개월: "
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="monthlyPlanTemp"
-            android:id="@+id/monthlyPlanText"/>
+            android:id="@+id/monthlyPlanText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -196,12 +290,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="approvalNumber : " />
-        <TextView
+            android:text="승인번호:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="approvalNumberTemp"
-            android:id="@+id/approvalNumberText"/>
+            android:id="@+id/approvalNumberText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -210,11 +311,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="approvalDate : " />
-        <TextView
+            android:text="승인일시:"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"/>
+        <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="approvalDateTemp"
-            android:id="@+id/approvalDateText"/>
+            android:id="@+id/approvalDateText"
+            android:textSize="20dp"
+            android:textColor="#666666"
+            android:letterSpacing="0"/>
     </LinearLayout>
 </LinearLayout>

@@ -104,6 +104,7 @@ public class ReceiptInformHandler {
     public void addReceiptInform(String stringTemp) {
         ReceiptInform receiptInform = new ReceiptInform(stringTemp);
         addLayout(receiptInform);
+        dbHelper.getWritableDatabase();
         dbHelper.insertInform(sqLiteDatabase, receiptInform);
         receiptInformArrayList.add(receiptInform);
     }

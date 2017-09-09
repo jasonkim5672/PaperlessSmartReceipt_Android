@@ -8,18 +8,21 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="productNameTemp"
-        android:id="@+id/productNameText"/>
+        android:id="@+id/productNameText"
+        android:textSize="20dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="unitPriceTemp"
-        android:id="@+id/unitPriceText"/>
+        android:id="@+id/unitPriceText"
+        android:textSize="20dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="quantityTemp"
-        android:id="@+id/quantityText"/>
+        android:id="@+id/quantityText"
+        android:textSize="20dp"/>
 
 </LinearLayout>

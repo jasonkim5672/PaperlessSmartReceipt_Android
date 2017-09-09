@@ -3,6 +3,7 @@ package com.ssu.cse.paperlesssmartreceipt_android;
 import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,12 +31,12 @@ public class ReceiptInformHandler {
         sqLiteDatabase = dbHelper.getWritableDatabase();
         receiptInformArrayList = dbHelper.getDB(sqLiteDatabase);
 
-        /*
+
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
             addLayout(receiptInformArrayList.get(i));
         }
-*/
-        testLayout(); // 테스트 코드 추후 삭제해야함
+
+        //testLayout(); // 테스트 코드 추후 삭제해야함
     }
 
     private void testLayout() {
@@ -47,6 +48,9 @@ public class ReceiptInformHandler {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(20, 20, 20, 20);
             linearLayoutTemp.setLayoutParams(layoutParams);
+
+            TextView storeNameText = (TextView)linearLayoutTemp.findViewById(R.id.storeNameText);
+            storeNameText.setText("test" + i);
 
             scrollLinearLayout.addView(linearLayoutTemp);
         }
@@ -62,40 +66,40 @@ public class ReceiptInformHandler {
         layoutParams.setMargins(20, 20, 20, 20);
         linearLayoutTemp.setLayoutParams(layoutParams);
 
-        TextView storeNameText = (TextView)activity.findViewById(R.id.storeNameText);
+        TextView storeNameText = (TextView)linearLayoutTemp.findViewById(R.id.storeNameText);
         storeNameText.setText(receiptInform.getStoreName());
-        TextView repreNameText = (TextView)activity.findViewById(R.id.repreNameText);
+        TextView repreNameText = (TextView)linearLayoutTemp.findViewById(R.id.repreNameText);
         repreNameText.setText(receiptInform.getRepreName());
-        TextView corpRegistNumberText = (TextView)activity.findViewById(R.id.corpRegistNumberText);
+        TextView corpRegistNumberText = (TextView)linearLayoutTemp.findViewById(R.id.corpRegistNumberText);
         corpRegistNumberText.setText(receiptInform.getCorpRegistNumber());
-        TextView addressText = (TextView)activity.findViewById(R.id.addressText);
+        TextView addressText = (TextView)linearLayoutTemp.findViewById(R.id.addressText);
         addressText.setText(receiptInform.getAddress());
-        TextView dateText = (TextView)activity.findViewById(R.id.dateText);
+        TextView dateText = (TextView)linearLayoutTemp.findViewById(R.id.dateText);
         dateText.setText(receiptInform.getDate());
-        TextView receiptNumberText = (TextView)activity.findViewById(R.id.receiptNumberText);
+        TextView receiptNumberText = (TextView)linearLayoutTemp.findViewById(R.id.receiptNumberText);
         receiptNumberText.setText(receiptInform.getReceiptNumber());
         // 상품목록
-        TextView t = (TextView)activity.findViewById(R.id.productInformText);
+        TextView t = (TextView)linearLayoutTemp.findViewById(R.id.productInformText);
         t.setText(receiptInform.getProductInformString());
         //TextView test = new TextView();
         //TextView storeNameText = (TextView)activity.findViewById(R.id.storeNameText);
         //storeNameText.setText("테스트");
         //
-        TextView extraTaxText = (TextView)activity.findViewById(R.id.extraTaxText);
-        extraTaxText.setText(receiptInform.getExtraTax()); // int
-        TextView taxText = (TextView)activity.findViewById(R.id.taxText);
-        taxText.setText(receiptInform.getTax()); // int
-        TextView cardSortText = (TextView)activity.findViewById(R.id.cardSortText);
+        TextView extraTaxText = (TextView)linearLayoutTemp.findViewById(R.id.extraTaxText);
+        extraTaxText.setText(Integer.toString(receiptInform.getExtraTax())); // int
+        TextView taxText = (TextView)linearLayoutTemp.findViewById(R.id.taxText);
+        taxText.setText(Integer.toString(receiptInform.getTax())); // int
+        TextView cardSortText = (TextView)linearLayoutTemp.findViewById(R.id.cardSortText);
         cardSortText.setText(receiptInform.getCardSort());
-        TextView cardNumberText = (TextView)activity.findViewById(R.id.cardNumberText);
+        TextView cardNumberText = (TextView)linearLayoutTemp.findViewById(R.id.cardNumberText);
         cardNumberText.setText(receiptInform.getCardNumber());
-        TextView expDateText = (TextView)activity.findViewById(R.id.expDateText);
+        TextView expDateText = (TextView)linearLayoutTemp.findViewById(R.id.expDateText);
         expDateText.setText(receiptInform.getExpDate());
-        TextView monthlyPlanText = (TextView)activity.findViewById(R.id.monthlyPlanText);
+        TextView monthlyPlanText = (TextView)linearLayoutTemp.findViewById(R.id.monthlyPlanText);
         monthlyPlanText.setText(receiptInform.getMonthlyPlan());
-        TextView approvalNumberText = (TextView)activity.findViewById(R.id.approvalNumberText);
-        approvalNumberText.setText(receiptInform.getApprovalNumber()); // int
-        TextView approvalDateText = (TextView)activity.findViewById(R.id.approvalDateText);
+        TextView approvalNumberText = (TextView)linearLayoutTemp.findViewById(R.id.approvalNumberText);
+        approvalNumberText.setText(Integer.toString(receiptInform.getApprovalNumber())); // int
+        TextView approvalDateText = (TextView)linearLayoutTemp.findViewById(R.id.approvalDateText);
         approvalDateText.setText(receiptInform.getApprovalDate());
 
         scrollLinearLayout.addView(linearLayoutTemp);

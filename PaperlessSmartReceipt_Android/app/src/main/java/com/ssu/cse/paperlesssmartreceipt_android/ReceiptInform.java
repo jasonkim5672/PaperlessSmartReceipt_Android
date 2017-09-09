@@ -154,7 +154,7 @@ public class ReceiptInform
         this.productInformString = productInformString;
 
         productInformArrayList = new ArrayList<ProductInform>();
-        String[] productStringTemp = productInformString.split("$");
+        String[] productStringTemp = productInformString.split("%");
         for(int i = 0; i < productStringTemp.length; i++) {
             productInformArrayList.add(new ProductInform(productStringTemp[i]));
         }

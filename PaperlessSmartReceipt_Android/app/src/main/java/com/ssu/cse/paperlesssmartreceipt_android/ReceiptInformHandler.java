@@ -20,7 +20,6 @@ public class ReceiptInformHandler {
 
     private Activity activity;
     private DBHelper dbHelper;
-    private SQLiteDatabase sqLiteDatabase;
 
 
     public ReceiptInformHandler(Activity activity) {
@@ -28,8 +27,7 @@ public class ReceiptInformHandler {
         this.activity = activity;
         scrollLinearLayout = (LinearLayout)activity.findViewById(R.id.scrollLin);
         dbHelper = new DBHelper(activity.getApplicationContext());
-        sqLiteDatabase = dbHelper.getWritableDatabase();
-        receiptInformArrayList = dbHelper.getDB(sqLiteDatabase);
+        receiptInformArrayList = dbHelper.getDB(dbHelper.getWritableDatabase());
 
 
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
@@ -108,7 +106,7 @@ public class ReceiptInformHandler {
     public void addReceiptInform(String stringTemp) {
         ReceiptInform receiptInform = new ReceiptInform(stringTemp);
         addLayout(receiptInform);
-        dbHelper.insertInform(sqLiteDatabase, receiptInform);
+        dbHelper.insertInform(dbHelper.getWritableDatabase(), receiptInform);
         receiptInformArrayList.add(receiptInform);
     }
 

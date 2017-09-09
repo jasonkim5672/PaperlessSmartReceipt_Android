@@ -2,6 +2,7 @@ package com.ssu.cse.paperlesssmartreceipt_android;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ public class ReceiptInformHandler {
 
 
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
-            addLayout(receiptInformArrayList.get(i));
+            addReceiptLayout(receiptInformArrayList.get(i));
         }
 
         //testLayout(); // 테스트 코드 추후 삭제해야함
@@ -54,8 +55,14 @@ public class ReceiptInformHandler {
         }
     }
 
+    public void addReceiptInform(String stringTemp) {
+        ReceiptInform receiptInform = new ReceiptInform(stringTemp);
+        addReceiptLayout(receiptInform);
+        dbHelper.insertInform(dbHelper.getWritableDatabase(), receiptInform);
+        receiptInformArrayList.add(receiptInform);
+    }
 
-    private void addLayout(ReceiptInform receiptInform) {
+    private void addReceiptLayout(ReceiptInform receiptInform) {
         LayoutInflater inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         LinearLayout linearLayoutTemp = (LinearLayout)inflater.inflate(R.layout.receipt_layout, null);
@@ -76,13 +83,34 @@ public class ReceiptInformHandler {
         dateText.setText(receiptInform.getDate());
         TextView receiptNumberText = (TextView)linearLayoutTemp.findViewById(R.id.receiptNumberText);
         receiptNumberText.setText(receiptInform.getReceiptNumber());
+
         // 상품목록
-        TextView t = (TextView)linearLayoutTemp.findViewById(R.id.productInformText);
-        t.setText(receiptInform.getProductInformString());
-        //TextView test = new TextView();
-        //TextView storeNameText = (TextView)activity.findViewById(R.id.storeNameText);
-        //storeNameText.setText("테스트");
-        //
+        LinearLayout productInformLin = (LinearLayout)linearLayoutTemp.findViewById(R.id.productInformLin);
+        ArrayList<ReceiptInform.ProductInform> productInformArrayListTemp = receiptInform.getProductInformArrayList();
+
+        for(int i = 0; i < productInformArrayListTemp.size(); i++) {
+
+            ReceiptInform.ProductInform productInformTemp = productInformArrayListTemp.get(i);
+
+            LayoutInflater pInflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            LinearLayout pLinearLayoutTemp = (LinearLayout)inflater.inflate(R.layout.product_layout, null);
+
+            LinearLayout.LayoutParams pLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            //layoutParams.setMargins(20, 20, 20, 20);
+            pLinearLayoutTemp.setLayoutParams(layoutParams);
+
+            TextView productNameText = (TextView)pLinearLayoutTemp.findViewById(R.id.productNameText);
+            productNameText.setText(productInformTemp.getProductName());
+            TextView unitPriceText = (TextView)pLinearLayoutTemp.findViewById(R.id.unitPriceText);
+            unitPriceText.setText(Integer.toString(productInformTemp.getUnitPrice()));
+            TextView quantityText = (TextView)pLinearLayoutTemp.findViewById(R.id.quantityText);
+            quantityText.setText(Integer.toString(productInformTemp.getQuantity()));
+
+            productInformLin.addView(pLinearLayoutTemp);
+        }
+        
+
         TextView extraTaxText = (TextView)linearLayoutTemp.findViewById(R.id.extraTaxText);
         extraTaxText.setText(Integer.toString(receiptInform.getExtraTax())); // int
         TextView taxText = (TextView)linearLayoutTemp.findViewById(R.id.taxText);
@@ -101,13 +129,6 @@ public class ReceiptInformHandler {
         approvalDateText.setText(receiptInform.getApprovalDate());
 
         scrollLinearLayout.addView(linearLayoutTemp);
-    }
-
-    public void addReceiptInform(String stringTemp) {
-        ReceiptInform receiptInform = new ReceiptInform(stringTemp);
-        addLayout(receiptInform);
-        dbHelper.insertInform(dbHelper.getWritableDatabase(), receiptInform);
-        receiptInformArrayList.add(receiptInform);
     }
 
     public void search(String stringTemp) {

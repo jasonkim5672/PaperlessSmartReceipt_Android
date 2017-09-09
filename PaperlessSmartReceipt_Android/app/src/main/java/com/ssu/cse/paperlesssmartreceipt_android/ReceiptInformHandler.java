@@ -85,6 +85,8 @@ public class ReceiptInformHandler {
         LinearLayout productInformLin = (LinearLayout)linearLayoutTemp.findViewById(R.id.productInformLin);
         ArrayList<ReceiptInform.ProductInform> productInformArrayListTemp = receiptInform.getProductInformArrayList();
 
+        int totalPrice = 0;
+
         for(int i = 0; i < productInformArrayListTemp.size(); i++) {
 
             ReceiptInform.ProductInform productInformTemp = productInformArrayListTemp.get(i);
@@ -104,10 +106,13 @@ public class ReceiptInformHandler {
             TextView quantityText = (TextView)pLinearLayoutTemp.findViewById(R.id.quantityText);
             quantityText.setText(Integer.toString(productInformTemp.getQuantity()));
 
+            totalPrice += productInformTemp.getUnitPrice() * productInformTemp.getQuantity();
+
             productInformLin.addView(pLinearLayoutTemp);
         }
-        
 
+        TextView sumText = (TextView)linearLayoutTemp.findViewById(R.id.sumText);
+        sumText.setText(Integer.toString(totalPrice));
         TextView extraTaxText = (TextView)linearLayoutTemp.findViewById(R.id.extraTaxText);
         extraTaxText.setText(Integer.toString(receiptInform.getExtraTax())); // int
         TextView taxText = (TextView)linearLayoutTemp.findViewById(R.id.taxText);
@@ -120,6 +125,12 @@ public class ReceiptInformHandler {
         expDateText.setText(receiptInform.getExpDate());
         TextView monthlyPlanText = (TextView)linearLayoutTemp.findViewById(R.id.monthlyPlanText);
         monthlyPlanText.setText(receiptInform.getMonthlyPlan());
+
+        TextView sellPriceText = (TextView)linearLayoutTemp.findViewById(R.id.sellPriceText);
+        sellPriceText.setText(Integer.toString(receiptInform.getExtraTax()));
+        TextView approvalPriceText = (TextView)linearLayoutTemp.findViewById(R.id.approvalPriceText);
+        approvalPriceText.setText(Integer.toString(totalPrice));
+
         TextView approvalNumberText = (TextView)linearLayoutTemp.findViewById(R.id.approvalNumberText);
         approvalNumberText.setText(Integer.toString(receiptInform.getApprovalNumber())); // int
         TextView approvalDateText = (TextView)linearLayoutTemp.findViewById(R.id.approvalDateText);

@@ -104,8 +104,10 @@ public class MainActivity extends AppCompatActivity
         String bodyTemp = "쥬시!이병훈!0000-000!파주!2017-09-09!1123891333!딸바#2000#1%초바#1500#1%아이스아메리카노#1500#1!4500!500!신한카드!0000-0000-****-****!**/**!3개월!1098240!2017-09-09";
         mNote.setText(body);
         try {
+            // bodyTemp -> body로 수정해야함
             receiptInformHandler.addReceiptInform(bodyTemp);
         }catch (Exception e) {
+            // 디비에 중복들어오면 alert띄우기로 수정
             mNote.append("\nError!" + e.getMessage());
         }
     }

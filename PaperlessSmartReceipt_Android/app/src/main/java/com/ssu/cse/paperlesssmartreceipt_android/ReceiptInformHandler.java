@@ -27,12 +27,12 @@ public class ReceiptInformHandler {
         dbHelper = new DBHelper(activity.getApplicationContext());
         receiptInformArrayList = dbHelper.getDB(dbHelper.getWritableDatabase());
 
-
+/*
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
             addReceiptLayout(receiptInformArrayList.get(i));
         }
-
-        //testLayout(); // 테스트 코드 추후 삭제해야함
+*/
+        testLayout(); // 테스트 코드 추후 삭제해야함
     }
 
     private void testLayout() {
@@ -48,14 +48,29 @@ public class ReceiptInformHandler {
             TextView storeNameText = (TextView)linearLayoutTemp.findViewById(R.id.storeNameText);
             storeNameText.setText("test" + i);
 
+
+            LinearLayout productInformLin = (LinearLayout)linearLayoutTemp.findViewById(R.id.productInformLin);
+
+            for(int j = 0; j < 10; j++) {
+                LayoutInflater pInflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                LinearLayout pLinearLayoutTemp = (LinearLayout)inflater.inflate(R.layout.product_layout, null);
+
+                LinearLayout.LayoutParams pLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                //pLayoutParams.setMargins(0, 0, 0, 0);
+                pLinearLayoutTemp.setLayoutParams(layoutParams);
+
+                productInformLin.addView(pLinearLayoutTemp);
+            }
+
             scrollLinearLayout.addView(linearLayoutTemp);
         }
     }
 
     public void addReceiptInform(String stringTemp) {
         ReceiptInform receiptInform = new ReceiptInform(stringTemp);
-        addReceiptLayout(receiptInform);
         dbHelper.insertInform(dbHelper.getWritableDatabase(), receiptInform);
+        addReceiptLayout(receiptInform);
         receiptInformArrayList.add(receiptInform);
     }
 

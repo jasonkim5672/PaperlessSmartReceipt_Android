@@ -108,18 +108,14 @@ public class MainActivity extends AppCompatActivity
             receiptInformHandler.addReceiptInform(bodyTemp);
         }catch (Exception e) {
             // 디비에 중복들어오면 alert띄우기로 수정
-            mNote.append("\nError!" + e.getMessage());
+            new AlertDialog.Builder(this).setTitle("이미 발급받은 영수증 입니다.")
+                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+
+                        }
+                    }).show();
         }
-    }
-
-
-    private NdefMessage getNoteAsNdef() {
-        byte[] textBytes = mNote.getText().toString().getBytes();
-        NdefRecord textRecord = new NdefRecord(NdefRecord.TNF_MIME_MEDIA, "text/plain".getBytes(),
-                new byte[] {}, textBytes);
-        return new NdefMessage(new NdefRecord[] {
-                textRecord
-        });
     }
 
     NdefMessage[] getNdefMessages(Intent intent) {
@@ -153,7 +149,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void enableNdefExchangeMode() {
-        mNfcAdapter.enableForegroundNdefPush(MainActivity.this, getNoteAsNdef());
         mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mNdefExchangeFilters, null);
     }
 

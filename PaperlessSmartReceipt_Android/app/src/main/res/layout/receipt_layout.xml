@@ -17,7 +17,7 @@
             android:textColor="#000000"
             android:textSize="35dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +38,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,7 +60,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +82,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,7 +104,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -122,7 +126,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,6 +136,25 @@
             android:textSize="20dp"
             android:textColor="#666666"
             android:letterSpacing="0"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" --------------------------------------- "
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -182,7 +206,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_marginRight="30dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -198,7 +224,8 @@
             android:id="@+id/sumText"
             android:textSize="20dp"
             android:textColor="#666666"
-            android:letterSpacing="0" />
+            android:letterSpacing="0"
+            android:background="#ffffdd"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -211,7 +238,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -232,7 +260,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -245,6 +274,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" --------- 신용카드 승인정보 --------- "
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -253,7 +301,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -274,7 +323,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -295,7 +345,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -316,7 +367,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -337,7 +389,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -358,7 +411,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -379,7 +433,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -400,7 +455,8 @@
             android:textColor="#000000"
             android:textSize="20dp"
             android:letterSpacing="0.2"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"/>
         <com.ssu.cse.paperlesssmartreceipt_android.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -55,8 +56,6 @@ public class MainActivity extends AppCompatActivity
             ndefDetected.addDataType("text/plain");
         } catch (IntentFilter.MalformedMimeTypeException e) { }
         mNdefExchangeFilters = new IntentFilter[] { ndefDetected };
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         receiptInformHandler = new ReceiptInformHandler(this);
     }
@@ -108,6 +107,8 @@ public class MainActivity extends AppCompatActivity
             receiptInformHandler.addReceiptInform(body);
         } catch (Exception e) {
             // 디비에 중복들어오면 alert띄우기로 수정
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
         }
     }
 

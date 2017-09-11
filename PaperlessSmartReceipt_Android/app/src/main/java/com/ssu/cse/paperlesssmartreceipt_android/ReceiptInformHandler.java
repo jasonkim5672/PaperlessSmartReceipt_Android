@@ -31,40 +31,6 @@ public class ReceiptInformHandler {
         for(int i = receiptInformArrayList.size() - 1; i >= 0; i--) {
             addReceiptLayout(receiptInformArrayList.get(i));
         }
-
-        //testLayout(); // 테스트 코드 추후 삭제해야함
-    }
-
-    private void testLayout() {
-        for(int i = 0; i < 10; i++) {
-            LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            LinearLayout linearLayoutTemp = (LinearLayout) inflater.inflate(R.layout.receipt_layout, null);
-
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(20, 20, 20, 20);
-            linearLayoutTemp.setLayoutParams(layoutParams);
-
-            TextView storeNameText = (TextView)linearLayoutTemp.findViewById(R.id.storeNameText);
-            storeNameText.setText("test" + i);
-
-
-            LinearLayout productInformLin = (LinearLayout)linearLayoutTemp.findViewById(R.id.productInformLin);
-
-            for(int j = 0; j < 10; j++) {
-                LayoutInflater pInflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-                LinearLayout pLinearLayoutTemp = (LinearLayout)inflater.inflate(R.layout.product_layout, null);
-
-                LinearLayout.LayoutParams pLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                //pLayoutParams.setMargins(0, 0, 0, 0);
-                pLinearLayoutTemp.setLayoutParams(layoutParams);
-
-                productInformLin.addView(pLinearLayoutTemp);
-            }
-
-            scrollLinearLayout.addView(linearLayoutTemp);
-        }
     }
 
     public void addReceiptInform(String stringTemp) {
@@ -158,7 +124,7 @@ public class ReceiptInformHandler {
     public void showDateSearchLayout(String stringTemp) {
         scrollLinearLayout.removeAllViews();
         for(int i = receiptInformArrayList.size() - 1; i >= 0; i--) {
-            String searchTemp = receiptInformArrayList.get(i).getApprovalDate();
+            String searchTemp = receiptInformArrayList.get(i).getDate();
             if(searchTemp.equals(stringTemp)) {
                 addReceiptLayout(receiptInformArrayList.get(i));
             }

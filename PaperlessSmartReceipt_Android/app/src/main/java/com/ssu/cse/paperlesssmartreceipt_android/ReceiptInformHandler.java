@@ -27,12 +27,12 @@ public class ReceiptInformHandler {
         dbHelper = new DBHelper(activity.getApplicationContext());
         receiptInformArrayList = dbHelper.getDB(dbHelper.getWritableDatabase());
 
-/*
-        for(int i = 0; i < receiptInformArrayList.size(); i++) {
+
+        for(int i = receiptInformArrayList.size() - 1; i >= 0; i--) {
             addReceiptLayout(receiptInformArrayList.get(i));
         }
-*/
-        testLayout(); // 테스트 코드 추후 삭제해야함
+
+        //testLayout(); // 테스트 코드 추후 삭제해야함
     }
 
     private void testLayout() {
@@ -155,7 +155,20 @@ public class ReceiptInformHandler {
     }
 
 
-    public void search(String stringTemp) {
-        // search
+    public void showDateSearchLayout(String stringTemp) {
+        scrollLinearLayout.removeAllViews();
+        for(int i = receiptInformArrayList.size() - 1; i >= 0; i--) {
+            String searchTemp = receiptInformArrayList.get(i).getApprovalDate();
+            if(searchTemp.equals(stringTemp)) {
+                addReceiptLayout(receiptInformArrayList.get(i));
+            }
+        }
+    }
+
+    public void showAllLayout() {
+        scrollLinearLayout.removeAllViews();
+        for(int i = receiptInformArrayList.size() - 1; i >= 0; i--) {
+            addReceiptLayout(receiptInformArrayList.get(i));
+        }
     }
 }

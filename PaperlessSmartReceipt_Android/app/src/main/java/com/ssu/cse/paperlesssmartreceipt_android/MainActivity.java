@@ -10,8 +10,13 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -21,14 +26,13 @@ public class MainActivity extends AppCompatActivity
     private boolean mResumed = false;
     //private boolean mWriteMode = false;
     NfcAdapter mNfcAdapter;
-    TextView mNote;
 
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mNdefExchangeFilters;
 
     private ReceiptInform receiptInform;
 
-    private ReceiptInformHandler receiptInformHandler;
+    public static ReceiptInformHandler receiptInformHandler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,6 @@ public class MainActivity extends AppCompatActivity
         ab.setTitle("똑수증");
 
         setContentView(R.layout.activity_main);
-        mNote = ((TextView) findViewById(R.id.note));
 
         // Handle all of our received NFC intents in this activity.
         mNfcPendingIntent = PendingIntent.getActivity(this, 0,
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity
             ndefDetected.addDataType("text/plain");
         } catch (IntentFilter.MalformedMimeTypeException e) { }
         mNdefExchangeFilters = new IntentFilter[] { ndefDetected };
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         receiptInformHandler = new ReceiptInformHandler(this);
     }
@@ -98,23 +103,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setNoteBody(String body) {
-        //Editable text = mNote.getText();
-        //text.clear();
-        //text.append(body);
-        String bodyTemp = "쥬시!이병훈!0000-000!파주!2017-09-09!1123891333!딸바#2000#1%초바#1500#1%아이스아메리카노#1500#1!4500!500!신한카드!0000-0000-****-****!**/**!3개월!1098240!2017-09-09";
-        mNote.setText(body);
         try {
             // bodyTemp -> body로 수정해야함
-            receiptInformHandler.addReceiptInform(bodyTemp);
-        }catch (Exception e) {
+            receiptInformHandler.addReceiptInform(body);
+        } catch (Exception e) {
             // 디비에 중복들어오면 alert띄우기로 수정
-            new AlertDialog.Builder(this).setTitle("이미 발급받은 영수증 입니다.")
-                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface arg0, int arg1) {
-
-                        }
-                    }).show();
         }
     }
 
@@ -149,6 +142,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void enableNdefExchangeMode() {
+        mNfcAdapter.enableForegroundNdefPush(MainActivity.this, getNoteAsNdef());
         mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mNdefExchangeFilters, null);
     }
 
@@ -157,4 +151,34 @@ public class MainActivity extends AppCompatActivity
         mNfcAdapter.disableForegroundDispatch(this);
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                showDatePickerDialog();
+                return true;
+            case R.id.reset_button:
+                receiptInformHandler.showAllLayout();
+                TextView tv1= (TextView)findViewById(R.id.action_text);
+                tv1.setText("전체");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void showDatePickerDialog() {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
 }

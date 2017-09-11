@@ -7,14 +7,6 @@
     android:orientation="vertical"
     tools:context="com.ssu.cse.paperlesssmartreceipt_android.MainActivity">
 
-    <TextView
-        android:id="@+id/note"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:text="여기에 받은 데이터가 표시" >
-    </TextView>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

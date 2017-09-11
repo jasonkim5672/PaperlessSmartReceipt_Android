@@ -3,4 +3,7 @@
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="action_search">Date search</string>
+    <string name="action_text">전체</string>
+    <string name="reset_button">전체보기</string>
 </resources>

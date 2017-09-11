@@ -142,7 +142,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void enableNdefExchangeMode() {
-        mNfcAdapter.enableForegroundNdefPush(MainActivity.this, getNoteAsNdef());
         mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mNdefExchangeFilters, null);
     }
 

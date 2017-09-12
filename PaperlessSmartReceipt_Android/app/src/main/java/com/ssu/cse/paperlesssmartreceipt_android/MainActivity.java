@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity
 
     private void setNoteBody(String body) {
         try {
-            // bodyTemp -> body로 수정해야함
             receiptInformHandler.addReceiptInform(body);
         } catch (Exception e) {
             // 디비에 중복들어오면 alert띄우기로 수정
@@ -101,7 +100,6 @@ public class MainActivity extends AppCompatActivity
 
                         }
                     }).show();
-
         }
     }
 

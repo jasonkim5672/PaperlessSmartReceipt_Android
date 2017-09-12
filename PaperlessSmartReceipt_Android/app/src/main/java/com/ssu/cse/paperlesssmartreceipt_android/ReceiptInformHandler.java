@@ -28,7 +28,7 @@ public class ReceiptInformHandler {
         receiptInformArrayList = dbHelper.getDB(dbHelper.getWritableDatabase());
 
 
-        for(int i = receiptInformArrayList.size() - 1; i >= 0; i--) {
+        for(int i = 0 ; i < receiptInformArrayList.size(); i++) {
             addReceiptLayout(receiptInformArrayList.get(i));
         }
     }
@@ -117,13 +117,13 @@ public class ReceiptInformHandler {
         TextView approvalDateText = (TextView)linearLayoutTemp.findViewById(R.id.approvalDateText);
         approvalDateText.setText(receiptInform.getApprovalDate());
 
-        scrollLinearLayout.addView(linearLayoutTemp);
+        scrollLinearLayout.addView(linearLayoutTemp,0);
     }
 
 
     public void showDateSearchLayout(String stringTemp) {
         scrollLinearLayout.removeAllViews();
-        for(int i = receiptInformArrayList.size() - 1; i >= 0; i--) {
+        for(int i = 0; i < receiptInformArrayList.size(); i++) {
             String searchTemp = receiptInformArrayList.get(i).getDate();
             if(searchTemp.equals(stringTemp)) {
                 addReceiptLayout(receiptInformArrayList.get(i));
@@ -133,7 +133,7 @@ public class ReceiptInformHandler {
 
     public void showAllLayout() {
         scrollLinearLayout.removeAllViews();
-        for(int i = receiptInformArrayList.size() - 1; i >= 0; i--) {
+        for(int i = 0; i < receiptInformArrayList.size(); i++) {
             addReceiptLayout(receiptInformArrayList.get(i));
         }
     }

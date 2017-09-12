@@ -16,22 +16,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
 
-    private static final String TAG = "stickynotes";
-    private boolean mResumed = false;
-    //private boolean mWriteMode = false;
+    private static final String TAG = "Paperless Smart Receipt";
     NfcAdapter mNfcAdapter;
 
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mNdefExchangeFilters;
-
-    private ReceiptInform receiptInform;
 
     public static ReceiptInformHandler receiptInformHandler;
 
@@ -63,22 +57,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        mResumed = true;
-        // Sticky notes received from Android
-        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
-            NdefMessage[] messages = getNdefMessages(getIntent());
-            byte[] payload = messages[0].getRecords()[0].getPayload();
-            setNoteBody(new String(payload));
-            setIntent(new Intent()); // Consume this intent.
-        }
+
         enableNdefExchangeMode();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mResumed = false;
-        //mNfcAdapter.disableForegroundNdefPush(this);
+
+        disableNdefExchangeMode();
     }
 
     @Override
@@ -107,7 +94,13 @@ public class MainActivity extends AppCompatActivity
             receiptInformHandler.addReceiptInform(body);
         } catch (Exception e) {
             // 디비에 중복들어오면 alert띄우기로 수정
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            new AlertDialog.Builder(this).setTitle("이미 발급받은 영수증 입니다.")
+                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+
+                        }
+                    }).show();
 
         }
     }

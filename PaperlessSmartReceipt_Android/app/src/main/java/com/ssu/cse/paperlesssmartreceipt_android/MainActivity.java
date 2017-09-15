@@ -34,10 +34,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        //액션바 이름
-        android.support.v7.app.ActionBar ab = getSupportActionBar();
-        ab.setTitle("똑수증");
-
         setContentView(R.layout.activity_main);
 
         // Handle all of our received NFC intents in this activity.

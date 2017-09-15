@@ -1,14 +1,15 @@
 package com.ssu.cse.paperlesssmartreceipt_android;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by eunhye Lee on 2017-08-22.
  */
 
-public class ReceiptInform
+public class ReceiptInform implements Serializable
 {
-    public class ProductInform {
+    public class ProductInform implements Serializable {
         private String productName;   //상품명
         private int unitPrice;    //단가
         private int quantity; //수량

@@ -2,10 +2,14 @@ package com.ssu.cse.paperlesssmartreceipt_android;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -29,17 +33,53 @@ public class ReceiptInformHandler {
 
 
         for(int i = 0 ; i < receiptInformArrayList.size(); i++) {
-            addReceiptLayout(receiptInformArrayList.get(i));
+            //addReceiptLayout(receiptInformArrayList.get(i));
+            addMinReceiptLayout(receiptInformArrayList.get(i));
         }
     }
 
     public void addReceiptInform(String stringTemp) {
         ReceiptInform receiptInform = new ReceiptInform(stringTemp);
         dbHelper.insertInform(dbHelper.getWritableDatabase(), receiptInform);
-        addReceiptLayout(receiptInform);
+        //addReceiptLayout(receiptInform);
+        addMinReceiptLayout(receiptInform);
         receiptInformArrayList.add(receiptInform);
     }
 
+    private void addMinReceiptLayout(final ReceiptInform receiptInform) {
+        LayoutInflater inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout linearLayoutTemp = (LinearLayout)inflater.inflate(R.layout.min_receipt_layout, null);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(20, 20, 20, 20);
+        linearLayoutTemp.setLayoutParams(layoutParams);
+
+        TextView minDateText = (TextView)linearLayoutTemp.findViewById(R.id.minDateText);
+        minDateText.setText(receiptInform.getDate());
+        TextView minStoreNameText = (TextView)linearLayoutTemp.findViewById(R.id.minStoreNameText);
+        minStoreNameText.setText(receiptInform.getStoreName());
+        TextView minSumText = (TextView)linearLayoutTemp.findViewById(R.id.minSumText);
+        int totalPrice = 0;
+        ArrayList<ReceiptInform.ProductInform> productInformArrayListTemp = receiptInform.getProductInformArrayList();
+        for(int i = 0; i < productInformArrayListTemp.size(); i++) {
+            ReceiptInform.ProductInform productInformTemp = productInformArrayListTemp.get(i);
+            totalPrice += productInformTemp.getUnitPrice() * productInformTemp.getQuantity();
+        }
+        minSumText.setText(Integer.toString(totalPrice));
+        linearLayoutTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent receiptIntent = new Intent(activity.getApplicationContext(), ReceiptActivity.class);
+                    receiptIntent.putExtra("receiptInform", (Serializable) receiptInform);
+                    activity.startActivity(receiptIntent);
+                }catch (Exception e) {
+                    Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        scrollLinearLayout.addView(linearLayoutTemp, 0);
+    }
+/*
     private void addReceiptLayout(ReceiptInform receiptInform) {
         LayoutInflater inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -119,14 +159,15 @@ public class ReceiptInformHandler {
 
         scrollLinearLayout.addView(linearLayoutTemp,0);
     }
-
+*/
 
     public void showDateSearchLayout(String stringTemp) {
         scrollLinearLayout.removeAllViews();
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
             String searchTemp = receiptInformArrayList.get(i).getDate();
             if(searchTemp.equals(stringTemp)) {
-                addReceiptLayout(receiptInformArrayList.get(i));
+                //addReceiptLayout(receiptInformArrayList.get(i));
+                addMinReceiptLayout(receiptInformArrayList.get(i));
             }
         }
     }
@@ -134,7 +175,8 @@ public class ReceiptInformHandler {
     public void showAllLayout() {
         scrollLinearLayout.removeAllViews();
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
-            addReceiptLayout(receiptInformArrayList.get(i));
+            //addReceiptLayout(receiptInformArrayList.get(i));
+            addMinReceiptLayout(receiptInformArrayList.get(i));
         }
     }
 }

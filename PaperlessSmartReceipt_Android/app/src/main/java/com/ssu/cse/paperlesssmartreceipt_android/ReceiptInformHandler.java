@@ -170,6 +170,7 @@ public class ReceiptInformHandler {
                 addMinReceiptLayout(receiptInformArrayList.get(i));
             }
         }
+
     }
 
     public void showAllLayout() {

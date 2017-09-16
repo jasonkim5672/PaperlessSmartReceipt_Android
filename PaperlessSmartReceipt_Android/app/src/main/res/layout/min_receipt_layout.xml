@@ -2,12 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:padding="10dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="dateTemp"
-        android:id="@+id/minDateText"/>
+        android:id="@+id/minDateText"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:background="#eeeeff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,13 +22,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="storeNameText"
-            android:id="@+id/minStoreNameText"/>
+            android:id="@+id/minStoreNameText"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:letterSpacing="0.05"
+            android:paddingLeft="10dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="viewEnd"
             android:text="sumTemp"
-            android:id="@+id/minSumText"/>
+            android:id="@+id/minSumText"
+            android:textSize="20dp"
+            android:textColor="#999999"
+            android:paddingRight="10dp"/>
     </LinearLayout>
 </LinearLayout>

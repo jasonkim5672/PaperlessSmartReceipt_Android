@@ -23,6 +23,8 @@ public class ReceiptInformHandler {
     private Activity activity;
     private DBHelper dbHelper;
 
+    private boolean searchMode;
+
 
     public ReceiptInformHandler(Activity activity) {
 
@@ -31,19 +33,17 @@ public class ReceiptInformHandler {
         dbHelper = new DBHelper(activity.getApplicationContext());
         receiptInformArrayList = dbHelper.getDB(dbHelper.getWritableDatabase());
 
+        searchMode = false;
 
-        for(int i = 0 ; i < receiptInformArrayList.size(); i++) {
-            addMinReceiptLayout(receiptInformArrayList.get(i));
-        }
-        if (receiptInformArrayList.size() == 0) {
-            showNullLayout();
-        }
+        showAllLayout();
     }
 
     public void addReceiptInform(String stringTemp) {
+        if(searchMode) {
+            showAllLayout();
+        }
         ReceiptInform receiptInform = new ReceiptInform(stringTemp);
         dbHelper.insertInform(dbHelper.getWritableDatabase(), receiptInform);
-        //addReceiptLayout(receiptInform);
         addMinReceiptLayout(receiptInform);
         receiptInformArrayList.add(receiptInform);
     }
@@ -83,6 +83,7 @@ public class ReceiptInformHandler {
     }
 
     public void showDateSearchLayout(String stringTemp) {
+        searchMode = true;
         scrollLinearLayout.removeAllViews();
         boolean layoutCheck = false;
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
@@ -98,9 +99,13 @@ public class ReceiptInformHandler {
     }
 
     public void showAllLayout() {
+        searchMode = false;
         scrollLinearLayout.removeAllViews();
         for(int i = 0; i < receiptInformArrayList.size(); i++) {
             addMinReceiptLayout(receiptInformArrayList.get(i));
+        }
+        if(receiptInformArrayList.size() == 0) {
+            showNullLayout();
         }
     }
 

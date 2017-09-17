@@ -11,7 +11,7 @@
         android:id="@+id/minDateText"
         android:textSize="20dp"
         android:paddingLeft="10dp"
-        android:textColor="#000000"
+        android:textColor="#999999"
         android:background="#eeeeff"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:text="sumTemp"
             android:id="@+id/minSumText"
             android:textSize="20dp"
-            android:textColor="#999999"
+            android:textColor="#000000"
             android:paddingRight="10dp"/>
     </LinearLayout>
 </LinearLayout>

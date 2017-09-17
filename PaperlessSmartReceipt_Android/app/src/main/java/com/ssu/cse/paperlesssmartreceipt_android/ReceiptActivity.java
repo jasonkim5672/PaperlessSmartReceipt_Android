@@ -54,7 +54,7 @@ public class ReceiptActivity extends AppCompatActivity {
             TextView productNameText = (TextView)pLinearLayoutTemp.findViewById(R.id.productNameText);
             productNameText.setText(productInformTemp.getProductName());
             TextView unitPriceText = (TextView)pLinearLayoutTemp.findViewById(R.id.unitPriceText);
-            unitPriceText.setText(Integer.toString(productInformTemp.getUnitPrice()));
+            unitPriceText.setText(Integer.toString(productInformTemp.getUnitPrice()) + "원");
             TextView quantityText = (TextView)pLinearLayoutTemp.findViewById(R.id.quantityText);
             quantityText.setText(Integer.toString(productInformTemp.getQuantity()));
 
@@ -64,11 +64,11 @@ public class ReceiptActivity extends AppCompatActivity {
         }
 
         TextView sumText = (TextView)findViewById(R.id.sumText);
-        sumText.setText(Integer.toString(totalPrice));
+        sumText.setText(Integer.toString(totalPrice) + "원");
         TextView extraTaxText = (TextView)findViewById(R.id.extraTaxText);
-        extraTaxText.setText(Integer.toString(receiptInform.getExtraTax())); // int
+        extraTaxText.setText(Integer.toString(receiptInform.getExtraTax()) + "원"); // int
         TextView taxText = (TextView)findViewById(R.id.taxText);
-        taxText.setText(Integer.toString(receiptInform.getTax())); // int
+        taxText.setText(Integer.toString(receiptInform.getTax()) + "원"); // int
         TextView cardSortText = (TextView)findViewById(R.id.cardSortText);
         cardSortText.setText(receiptInform.getCardSort());
         TextView cardNumberText = (TextView)findViewById(R.id.cardNumberText);
@@ -79,9 +79,9 @@ public class ReceiptActivity extends AppCompatActivity {
         monthlyPlanText.setText(receiptInform.getMonthlyPlan());
 
         TextView sellPriceText = (TextView)findViewById(R.id.sellPriceText);
-        sellPriceText.setText(Integer.toString(receiptInform.getExtraTax()));
+        sellPriceText.setText(Integer.toString(receiptInform.getExtraTax()) + "원");
         TextView approvalPriceText = (TextView)findViewById(R.id.approvalPriceText);
-        approvalPriceText.setText(Integer.toString(totalPrice));
+        approvalPriceText.setText(Integer.toString(totalPrice) + "원");
 
         TextView approvalNumberText = (TextView)findViewById(R.id.approvalNumberText);
         approvalNumberText.setText(Integer.toString(receiptInform.getApprovalNumber())); // int

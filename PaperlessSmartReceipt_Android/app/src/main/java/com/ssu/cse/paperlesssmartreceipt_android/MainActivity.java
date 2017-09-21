@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity
         String body = new String(msg.getRecords()[0].getPayload());
         try {
             receiptInformHandler.addReceiptInform(body);
+            TextView tv1= (TextView)findViewById(R.id.action_text);
+            tv1.setText("전체");
             new AlertDialog.Builder(this).setTitle("영수증을 발급 받았습니다.")
                     .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override

@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.SQLException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -74,26 +75,27 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void promptForContent(final NdefMessage msg) {
-        new AlertDialog.Builder(this).setTitle("영수증을 발급 받았습니다.")
-                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        String body = new String(msg.getRecords()[0].getPayload());
-                        setNoteBody(body);
-                    }
-                }).show();
-    }
-
-    private void setNoteBody(String body) {
+        String body = new String(msg.getRecords()[0].getPayload());
         try {
             receiptInformHandler.addReceiptInform(body);
-        } catch (Exception e) {
-            // 디비에 중복들어오면 alert띄우기로 수정
+            new AlertDialog.Builder(this).setTitle("영수증을 발급 받았습니다.")
+                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                        }
+                    }).show();
+        } catch (SQLException sqlE) {
             new AlertDialog.Builder(this).setTitle("이미 발급받은 영수증 입니다.")
                     .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface arg0, int arg1) {
-
+                        }
+                    }).show();
+        } catch (Exception e) {
+            new AlertDialog.Builder(this).setTitle("잘못된 형식의 태그입니다.")
+                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
                         }
                     }).show();
         }

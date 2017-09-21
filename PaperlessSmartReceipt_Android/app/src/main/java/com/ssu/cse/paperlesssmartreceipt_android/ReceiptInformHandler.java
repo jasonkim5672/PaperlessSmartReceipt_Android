@@ -42,6 +42,9 @@ public class ReceiptInformHandler {
         if(searchMode) {
             showAllLayout();
         }
+        if(receiptInformArrayList.size() == 0) {
+            scrollLinearLayout.removeAllViews();
+        }
         ReceiptInform receiptInform = new ReceiptInform(stringTemp);
         dbHelper.insertInform(dbHelper.getWritableDatabase(), receiptInform);
         addMinReceiptLayout(receiptInform);
